@@ -17,7 +17,7 @@ def ex11_part1():
     return result
 
 
-print(f"the max number is: {ex11_part1()}")
+# print(f"the max number is: {ex11_part1()}")
 
 
 def ex11_part2():
@@ -25,7 +25,7 @@ def ex11_part2():
     return age * 12
 
 
-print(f"your age in months is: {ex11_part2()}")
+# print(f"your age in months is: {ex11_part2()}")
 
 def ex11_part3():
     texts = ""
@@ -35,13 +35,13 @@ def ex11_part3():
         row = input("Please enter a sentence: ")
     return texts
 
-"""
+
 try:
     text_list = ex11_part3()
     print(f"{text_list[::-1]}")
 except ValueError:
     print("Something went wrong in part 3")
-"""
+
 
 def raise_divide_by_x(num,x):
     if num % x != 0:
@@ -63,19 +63,36 @@ def ex11_part4():
 print(f"the random number that dives by 7,13,15 is: {ex11_part4()}")
 
 # part 5
-def prime_list_func(number):
-    prime_list = ""
-    for i in list(range(2, number//2+1)):
+def ex11_part5():
+    num1 = randint(1, 10)
+    num2 = randint(1, 10)
+    print(num1)
+    print(num2)
+    small_num = min(num1, num2)
+    max_num = max(num1, num2)
+    while True:
         try:
-            raise_divide_by_x(number, int(i))
-            prime_list = prime_list + " " + i
-            return prime_list
-
+            raise_divide_by_x(small_num, num1)
+            raise_divide_by_x(small_num, num2)
+            return small_num
         except Exception:
-            pass
+            small_num = small_num + 1
 
 
-a = prime_list_func(10)
-print(f" the prime list is: {a}")
+print(ex11_part5())
 
+def ex11_part6():
+    num = randint(1, 100)
+    while True:
+        guess = read_a_number("Guess the number: ")
+        if guess > num:
+            print(" the number you are looking for is smaller")
+        elif guess < num:
+            print(" the number you are looking for is larger")
+        else:
+            print("you found the number")
+            return
+
+
+ex11_part6()
 
