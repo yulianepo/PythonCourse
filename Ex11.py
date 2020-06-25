@@ -10,6 +10,7 @@ def read_a_number(prompt):
 
 def ex11_part1():
     result = float("-inf")
+    # No need to write range(0, 10) -> Can just write range(10)
     for _ in range(0, 10):
         num = read_a_number("Please enter a number: ")
         if num > result:
@@ -31,6 +32,9 @@ def ex11_part3():
     texts = ""
     row = input("Please enter a sentence: ")
     while row != "":
+        # If you put the items in reverse order, you can skip
+        # the entire second part of the solution
+        # texts = row + "\n" + texts
         texts = texts + "\n" + row
         row = input("Please enter a sentence: ")
     return texts
@@ -39,6 +43,14 @@ def ex11_part3():
 try:
     text_list = ex11_part3()
     print(f"{text_list[::-1]}")
+# This is a bad example of a try/except
+# because your except block doesn't do anything productive
+# if you can't help - better to let the exception flow until
+# someone else could
+# (you can also re-raise the exception after printing if that's
+#  what you wanted)
+# This is called "swallowing" exceptions, and I wrote about it
+# here: https://www.tocode.co.il/blog/2018-04-exceptions
 except ValueError:
     print("Something went wrong in part 3")
 
@@ -76,11 +88,15 @@ def ex11_part5():
             raise_divide_by_x(small_num, num2)
             return small_num
         except Exception:
+            # I think you can increase small_num by itself
+            # to make this loop run a bit faster
+            # small_num += small_num
             small_num = small_num + 1
 
 
 print(ex11_part5())
 
+# I see your AI player won't cheat ... that's ok honesty is a virtue
 def ex11_part6():
     num = randint(1, 100)
     while True:
